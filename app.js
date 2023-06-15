@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const bodyparser = require('body-parser');
 const request = require('request');
@@ -31,12 +32,12 @@ app.post("/",function(req,res){
   }
 
   const jsonData = JSON.stringify(data);
-
+  
   const url = 'https://us12.api.mailchimp.com/3.0/lists/5850214230';
 
   const options = {
       method:"POST",
-      auth :"jay:616fb14fc5904d01ffc7facbc511daf4-us12"
+      auth : process.env.API_KEY
   }
 
   const request = https.request(url , options , function(response){
@@ -54,7 +55,4 @@ app.listen(3000,function(){
   console.log("Server running on port 3000");
 })
 
-// 18c952f77f46b26db02ab63815a74a66-us12
 
-//list id
- // 5850214230.
